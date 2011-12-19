@@ -164,8 +164,7 @@ function _pointSearch(node, idx, arr) {
  * @param (Array) arr
  **/
 function _rangeSearch(start, end, arr) {
-  var len = end - start;
-  if (len <= 0) {
+  if (end - start <= 0) {
     throw new Error('end must be greater than start. start: ' + start + ', end: ' + end);
   }
   var resultHash = {};
@@ -184,7 +183,7 @@ function _rangeSearch(start, end, arr) {
   }
 
   var idx2 = this.pointTree.bsearch([end,   null]);
-  var len = this.pointTree.arr.length;
+  var len = this.pointTree.arr.length -1;
   while (idx2 <= len && this.pointTree.arr[idx2][0] <= end) {
     idx2++;
   }
