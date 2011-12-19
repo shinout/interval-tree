@@ -1,0 +1,24 @@
+{
+  "author": "SHIN Suzuki <shinout310@gmail.com>",
+  "name": "interval-tree",
+  "description": "interval tree in javascript",
+  "version": "0.0.1",
+  "keywords": ["tree", "interval", "range", "algorithm"],
+  "repository": {
+    "type": "git",
+    "url": "github:shinout/interval-tree.git"
+  },
+  "main": "IntervalTree.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "engines": {
+    "node": ">=0.4"
+  },
+
+  "dependencies": {
+    "sortedlist" : ">=0.1.0"
+  },
+
+  "devDependencies": {}
+}
