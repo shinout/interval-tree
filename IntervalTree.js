@@ -9,7 +9,7 @@ var SortedList = require('sortedlist');
  *   center:
  *
  **/
-function IntervalTree(data, center, options) {
+function IntervalTree(center, options) {
   options || (options = {});
 
   this.startKey     = options.startKey || 0; // start key
@@ -32,11 +32,6 @@ function IntervalTree(data, center, options) {
   }
 
   this.root = new Node(center, this);
-
-  Object.keys(data).forEach(function(id) {
-    // this.add(data[id]);
-    this.add(data[id], id);
-  }, this);
 }
 
 
@@ -273,7 +268,7 @@ function Interval(data, id, s, e) {
 Interval.prototype.result = function(start, end) {
   var ret = {
     id   : this.id,
-    data : this.data,
+    data : this.data
   };
   if (typeof start == 'number' && typeof end == 'number') {
     /**

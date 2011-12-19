@@ -6,6 +6,8 @@ function test() {
     return [Math.min(p1,p2), Math.max(p1,p2), id];
   }
 
+  var iTree = new IntervalTree(500);
+
 
   var intervals = (function() {
     var ret = [];
@@ -13,8 +15,12 @@ function test() {
     return ret;
   })();
 
+  intervals.forEach(function(val) {
+    iTree.add(val, val[2]);
+  });
 
-  var iTree = new IntervalTree(intervals, 500);
+
+
 
   /**
    * point search
