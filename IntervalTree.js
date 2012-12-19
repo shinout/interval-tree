@@ -183,21 +183,23 @@ function _rangeSearch(start, end, arr) {
   }
 
   var idx2 = this.pointTree.bsearch([end,   null]);
-  var len = this.pointTree.arr.length -1;
-  while (idx2 <= len && this.pointTree.arr[idx2][0] <= end) {
-    idx2++;
+  if (idx2 >= 0)
+  {
+    var len = this.pointTree.arr.length -1;
+    while (idx2 <= len && this.pointTree.arr[idx2][0] <= end) {
+      idx2++;
+    }
+
+    this.pointTree.arr.slice(idx1 + 1, idx2).forEach(function(point) {
+      var id = point[1];
+      resultHash[id] = true;
+    }, this);
+
+    Object.keys(resultHash).forEach(function(id) {
+      var itvl = this.intervalHash[id];
+      arr.push(itvl.result(start, end));
+    }, this);
   }
-
-  this.pointTree.arr.slice(idx1 + 1, idx2).forEach(function(point) {
-    var id = point[1];
-    resultHash[id] = true;
-  }, this);
-
-  Object.keys(resultHash).forEach(function(id) {
-    var itvl = this.intervalHash[id];
-    arr.push(itvl.result(start, end));
-  }, this);
-
 }
 
 
