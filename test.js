@@ -3,6 +3,14 @@ function test() {
   function createRandomInterval(unit, id) {
     var p1 = Math.floor(Math.random() * unit);
     var p2 = Math.floor(Math.random() * unit);
+    if (p1 === p2) {
+      if (p1 > 0 ) {
+        p1--;
+      }
+      else {
+        p2++;
+      }
+    }
     return [Math.min(p1,p2), Math.max(p1,p2), id];
   }
 
