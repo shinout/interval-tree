@@ -133,7 +133,7 @@ function _pointSearch(node, idx, arr) {
   if (!node) return;
 
   if (idx < node.idx) {
-    node.starts.toArray().every(function(itvl) {
+    node.starts.every(function(itvl) {
       var bool = (itvl.start <= idx);
       if (bool) arr.push(itvl.result());
       return bool;
@@ -142,7 +142,7 @@ function _pointSearch(node, idx, arr) {
   }
 
   else if (idx > node.idx) {
-    node.ends.toArray().every(function(itvl) {
+    node.ends.every(function(itvl) {
       var bool = (itvl.end >= idx);
       if (bool) arr.push(itvl.result());
       return bool;
@@ -151,7 +151,7 @@ function _pointSearch(node, idx, arr) {
   }
   // exact equal
   else {
-    node.starts.toArray().map(function(itvl) { arr.push(itvl.result()) });
+    node.starts.map(function(itvl) { arr.push(itvl.result()) });
   }
 }
 
@@ -178,19 +178,20 @@ function _rangeSearch(start, end, arr) {
 
 
   var idx1 = this.pointTree.bsearch([start, null]);
-  while (idx1 >= 0 && this.pointTree.toArray()[idx1][0] == start) {
+  var pointTreeArray = this.pointTree;
+  while (idx1 >= 0 && pointTreeArray[idx1][0] == start) {
     idx1--;
   }
 
   var idx2 = this.pointTree.bsearch([end,   null]);
   if (idx2 >= 0)
   {
-    var len = this.pointTree.toArray().length -1;
-    while (idx2 <= len && this.pointTree.toArray()[idx2][0] <= end) {
+    var len = pointTreeArray.length -1;
+    while (idx2 <= len && pointTreeArray[idx2][0] <= end) {
       idx2++;
     }
 
-    this.pointTree.toArray().slice(idx1 + 1, idx2).forEach(function(point) {
+    pointTreeArray.slice(idx1 + 1, idx2).forEach(function(point) {
       var id = point[1];
       resultHash[id] = true;
     }, this);
