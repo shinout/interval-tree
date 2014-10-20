@@ -108,14 +108,14 @@ IntervalTree.prototype.remove = function(interval_id) {
 function _insert(node, itvl) {
   if (itvl.end < node.idx) {
     if (!node.left) {
-      node.left = new Node(itvl.start + itvl.end >>> 1, this);
+      node.left = new Node(itvl.start + itvl.end >> 1, this);
     }
     return _insert.call(this, node.left, itvl);
   }
 
   if (node.idx < itvl.start) {
     if (!node.right) {
-      node.right = new Node(itvl.start + itvl.end >>> 1, this);
+      node.right = new Node(itvl.start + itvl.end >> 1, this);
     }
     return _insert.call(this, node.right, itvl);
   }
@@ -170,7 +170,7 @@ function _rangeSearch(start, end, arr) {
   var resultHash = {};
 
   var wholeWraps = [];
-  _pointSearch.call(this, this.root, (start + end) >>> 1, wholeWraps, true);
+  _pointSearch.call(this, this.root, (start + end) >> 1, wholeWraps, true);
 
   wholeWraps.forEach(function(result) {
     resultHash[result.id] = true;
