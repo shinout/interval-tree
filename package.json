@@ -2,7 +2,7 @@
   "author": "SHIN Suzuki <shinout310@gmail.com>",
   "name": "interval-tree",
   "description": "interval tree in javascript",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "keywords": ["tree", "interval", "range", "algorithm"],
   "repository": {
     "type": "git",
