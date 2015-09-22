@@ -2,6 +2,10 @@ interval-tree
 ==========
 interval tree in JavaScript
 
+**this repository is no more maintenanced.**
+**use [interval-tree2](https://github.com/shinout/interval-tree2)**
+
+
 ### Installation ###
     git clone git://github.com/shinout/interval-tree.git
 
